@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/Settings.dart' show Settings;
 import 'package:myapp/storepage.dart';
-// import 'package:provider/provider.dart';
+import 'package:provider/provider.dart';
 import 'GaleriPage.dart';
 
 void main() {
-  runApp(const MaterialApp(debugShowCheckedModeBanner: false, home: MyApp()));
-  // runApp(
-  //   MultiProvider(
-  //     providers: [
-  //       // ChangeNotifierProvider(create: (context) => ProviderProduk()),
-  //       // ChangeNotifierProvider(create: (context) => ProviderKeranjang()),
-  //     ],
-  //     child: MaterialApp(debugShowCheckedModeBanner: false, home: MyApp()),
-  //   ),
-  // );
+  // runApp(const MaterialApp(debugShowCheckedModeBanner: false, home: MyApp()));
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => ProviderProduk()),
+        ChangeNotifierProvider(create: (context) => ProviderKeranjang()),
+        ChangeNotifierProvider(create: (context) => AlamatProvider),
+      ],
+      child: MaterialApp(debugShowCheckedModeBanner: false, home: MyApp()),
+    ),
+  );
 }
 
 class MyApp extends StatefulWidget {

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/LoginPage.dart';
+import 'package:myapp/main.dart';
 
 class Settings extends StatefulWidget {
   const Settings({super.key});
@@ -28,8 +30,8 @@ class _SettingsState extends State<Settings> {
             ),
             const SizedBox(height: 16),
             const Text(
-              'Fathir',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              'Fathirr',
+              style: TextStyle(color: Colors.blue,fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 40),
             
@@ -61,7 +63,7 @@ class _SettingsState extends State<Settings> {
                 padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
               ),
               icon: const Icon(Icons.logout, color: Colors.black),
-              label: const Text('Logout',style: TextStyle(color: Colors.black) ,),
+              label: const Text('Logout', style: TextStyle(color: Colors.black)),
               onPressed: () {
                 _showLogoutDialog(context);
               },
@@ -91,11 +93,26 @@ class _SettingsState extends State<Settings> {
                 const SnackBar(content: Text("Berhasil logout")),
               );
               // Tambahkan logika logout asli di sini
+              _performLogout();
             },
             child: const Text("Logout"),
           ),
         ],
       ),
+    );
+  }
+
+  void _performLogout() {
+    // Logika untuk menghapus sesi pengguna
+    // Misalnya, jika Anda menggunakan shared_preferences:
+    // SharedPreferences.getInstance().then((prefs) {
+    //   prefs.remove('userToken'); // Hapus token atau data sesi
+    // });
+
+    // Navigasi kembali ke halaman login
+    Navigator.of(context).pushAndRemoveUntil(
+      MaterialPageRoute(builder: (context) => LoginPage()), // Ganti dengan halaman login Anda
+      (Route<dynamic> route) => false,
     );
   }
 }
